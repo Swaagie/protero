@@ -47,7 +47,7 @@ function module(file) {
  * @api private
  */
 function extname(file) {
-  return ~extensions.indexOf(path.extname(file).substr(1));
+  return !!~extensions.indexOf(path.extname(file).substr(1));
 }
 
 /**
@@ -61,6 +61,13 @@ function extname(file) {
  * @returns {Boolean} transpile file or not
  * @api public
  */
-export default register({
-  only: file => extname(file) && each(file) || !module(file)
-});
+function check(file) {
+  return extname(file) && each(file) || extname(file) && !module(file);
+}
+
+//
+// Provide the only check to the babel/register hook.
+//
+register({ only: check });
+
+export default check;

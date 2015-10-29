@@ -7,6 +7,10 @@
     "prepublish": "mkdir -p dist && babel -o ./dist/index.js ./index.js",
     "test": "mocha --spec reporter --compilers js:babel/register ./test.js"
   },
+  "protero": {
+    "extensions": [ "es6", "js", "jsx" ],
+    "modules": [ "test" ]
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/Swaagie/protero.git"
