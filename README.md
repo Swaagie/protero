@@ -12,7 +12,7 @@ npm install --save-dev protero
 
 Add the following to your `package.json`.
 
-```json
+```js
 {
   "scripts": {
     "test": "mocha --spec reporter --compilers js:protero ./test.js"
