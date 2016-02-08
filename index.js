@@ -1,6 +1,6 @@
 'use strict';
 
-import register from 'babel/register';
+import register from 'babel-register';
 import path from 'path';
 
 const {
