@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "mkdir -p dist && babel -o ./dist/index.js ./index.js",
-    "test": "mocha --spec reporter --compilers js:babel-register ./test.js"
+    "test": "mocha --spec reporter --compilers js:babel-register ./test.js",
+    "test-travis": "istanbul cover _mocha --report lcovonly -- --compilers js:babel-register ./test.js"
   },
   "protero": {
     "extensions": [
