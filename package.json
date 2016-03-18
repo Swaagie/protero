@@ -15,6 +15,7 @@
       "jsx"
     ],
     "modules": [
+      "/@scoped\/regexps/g",
       "test"
     ]
   },

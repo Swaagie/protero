@@ -22,4 +22,8 @@ describe('Protero', () => {
   it('will only enlist allowed modules', () => {
     assume(protero('/root/node_modules/test/somefile.jsx')).to.equal(true);
   });
+
+  it('will execute the filters as RegExp', function () {
+    assume(protero('/root/node_modules/@scoped/regexps/somefile.jsx')).to.equal(true);
+  });
 });

@@ -11,6 +11,32 @@ const {
 ).protero || {};
 
 /**
+ * Transform strings that look like Regular Expressions.
+ *
+ * @param {String} string String to transform
+ * @returns {RegExp|Boolean} false or regular expression.
+ * @api private
+ */
+function regexify(string) {
+  if (!/^\/[^\/]*\//.test(string)) {
+    return false;
+  }
+
+  const flags = string.lastIndexOf('/');
+
+  try {
+    return new RegExp(
+      string.slice(string.indexOf('/'), flags),
+      string.slice(flags + 1)
+    );
+  } catch (error) {
+    /* Ignore the error */
+  }
+
+  return false;
+}
+
+/**
  * Check if the file is part of the whitelisted modules.
  *
  * @param {String} file
@@ -18,13 +44,24 @@ const {
  * @api private
  */
 function each(file) {
+  function outerLeaf(i) {
+    return file.lastIndexOf('node_modules') < i;
+  }
+
   return modules.some(function contains(base) {
     let i = file.indexOf(base);
+
+    if (outerLeaf(i)) {
+      return true;
+    }
+
+    const regex = regexify(base);
+    i = regex && regex.exec(file);
 
     //
     // Check if the module is the outer most leaf of the module tree.
     //
-    return i && file.lastIndexOf('node_modules') < i;
+    return i && outerLeaf(i.index);
   });
 }
 
