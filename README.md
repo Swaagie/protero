@@ -18,10 +18,11 @@ Add the following to your `package.json`.
     "test": "mocha --spec reporter --compilers js:protero ./test.js"
   },
   "protero": {
-    "extensions": [ "js", "jsx" ], // optional, defaults are listed.
+    "extensions": [ "js", "jsx" ],  // optional, defaults are listed.
     "modules": [
       "dependency1",
-      "dependency2"
+      "dependency2",
+      "/@scoped\/regex/"            // check filepaths with RegExp.
     ]
   }
 }
