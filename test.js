@@ -25,7 +25,10 @@ describe('Protero', () => {
 
   it('will execute the filters as RegExp', function () {
     assume(protero('/root/node_modules/@scoped/regexps/somefile.jsx')).to.equal(true);
-    assume(protero('/home/jenkins/workspace/ux-uxcore2-build-pr/node_modules/@scoped/regexps/node_modules/@scoped/regexps/index.js')).to.equal(true);
+    assume(protero('/workspace/ux-build-pr/node_modules/@scoped/regexps/node_modules/@scoped/regexps/index.js')).to.equal(true);
+  });
 
+  it('will add global flag if missing', function () {
+    assume(protero('/addGlobalFlag/toRegex/addGlobalFlag/somefile.jsx')).to.equal(true);
   });
 });

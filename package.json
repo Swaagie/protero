@@ -16,6 +16,7 @@
     ],
     "modules": [
       "/@scoped\/regexps/g",
+      "/(addGlobalFlag\/)+/",
       "test"
     ]
   },

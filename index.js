@@ -22,13 +22,19 @@ function regexify(string) {
     return false;
   }
 
-  const flags = string.lastIndexOf('/');
+  const flagsIndex = string.lastIndexOf('/');
+  let flags = string.slice(flagsIndex + 1);
+
+  //
+  // Make sure there is a global flag such that the RegExp will have a
+  // lastIndex to start from for consecutive executions.
+  //
+  if (!~flags.indexOf('g')) {
+    flags += 'g';
+  }
 
   try {
-    return new RegExp(
-      string.slice(string.indexOf('/'), flags),
-      string.slice(flags + 1)
-    );
+    return new RegExp(string.slice(string.indexOf('/'), flagsIndex), flags);
   } catch (error) {
     /* Ignore the error */
   }
