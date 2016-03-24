@@ -50,13 +50,20 @@ function each(file) {
 
   return modules.some(function contains(base) {
     let i = file.indexOf(base);
+    let found;
 
     if (outerLeaf(i)) {
       return true;
     }
 
     const regex = regexify(base);
-    i = regex && regex.exec(file);
+    if (!regex) {
+      return false;
+    }
+
+    while (found = regex.exec(file)) {
+      i = found;
+    }
 
     //
     // Check if the module is the outer most leaf of the module tree.

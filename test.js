@@ -25,5 +25,7 @@ describe('Protero', () => {
 
   it('will execute the filters as RegExp', function () {
     assume(protero('/root/node_modules/@scoped/regexps/somefile.jsx')).to.equal(true);
+    assume(protero('/home/jenkins/workspace/ux-uxcore2-build-pr/node_modules/@scoped/regexps/node_modules/@scoped/regexps/index.js')).to.equal(true);
+
   });
 });
