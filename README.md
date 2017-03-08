@@ -1,5 +1,7 @@
 # protero
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Swaagie/protero.svg)](https://greenkeeper.io/)
+
 Utility method for transpiling dependencies with babel. By default `node_modules` are not transpiled by [Babel](https://babeljs.io/). This compiler/require hook allows you to include certain `node_modules` or extensions.
 
 ### Install
